@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +12,21 @@
     <width>800</width>
     <height>500</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -20,19 +38,24 @@
       <x>0</x>
       <y>0</y>
       <width>220</width>
-      <height>460</height>
+      <height>430</height>
      </rect>
     </property>
-    <column>
-     <property name="text">
-      <string>시간</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>파일명</string>
-     </property>
-    </column>
+    <property name="showDropIndicator" stdset="0">
+     <bool>false</bool>
+    </property>
+    <property name="dragDropOverwriteMode">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>100</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>30</number>
+    </attribute>
    </widget>
    <widget class="QLabel" name="label_image">
     <property name="geometry">
@@ -92,7 +115,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>start</string>
+      <string>시작</string>
      </property>
     </widget>
     <widget class="QPushButton" name="stop_btn">
@@ -105,7 +128,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>stop</string>
+      <string>멈춤</string>
      </property>
     </widget>
    </widget>
@@ -131,6 +154,9 @@
       <height>181</height>
      </rect>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
@@ -154,7 +180,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>store</string>
+      <string>파일저장</string>
      </property>
     </widget>
     <widget class="QPushButton" name="reset_btn">
@@ -167,7 +193,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>reset</string>
+      <string>로그삭제</string>
      </property>
     </widget>
     <widget class="QPushButton" name="autosave_btn">
@@ -180,7 +206,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>auto save</string>
+      <string>자동저장</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="spinBox">
@@ -191,6 +217,36 @@
        <width>42</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>false</bool>
+     </property>
+     <property name="wrapping">
+      <bool>false</bool>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="buttonSymbols">
+      <enum>QAbstractSpinBox::UpDownArrows</enum>
+     </property>
+     <property name="accelerated">
+      <bool>true</bool>
+     </property>
+     <property name="correctionMode">
+      <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+     </property>
+     <property name="keyboardTracking">
+      <bool>false</bool>
+     </property>
+     <property name="minimum">
+      <number>5</number>
+     </property>
+     <property name="maximum">
+      <number>100</number>
      </property>
      <property name="singleStep">
       <number>5</number>
@@ -208,6 +264,32 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reload_btn">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>429</y>
+      <width>112</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>새로고침</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="delete_btn">
+    <property name="geometry">
+     <rect>
+      <x>109</x>
+      <y>429</y>
+      <width>112</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>파일삭제</string>
     </property>
    </widget>
   </widget>
