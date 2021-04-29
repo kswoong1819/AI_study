@@ -38,14 +38,26 @@
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
      </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
      <property name="maximum">
-      <number>100</number>
+      <number>160</number>
      </property>
      <property name="value">
-      <number>50</number>
+      <number>80</number>
+     </property>
+     <property name="sliderPosition">
+      <number>80</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::NoTicks</enum>
+     </property>
+     <property name="tickInterval">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QSlider" name="vertical_slider">
@@ -57,8 +69,26 @@
        <height>371</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>120</number>
+     </property>
+     <property name="value">
+      <number>60</number>
+     </property>
+     <property name="tracking">
+      <bool>true</bool>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="invertedControls">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>
@@ -66,9 +96,9 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>10</y>
+      <y>40</y>
       <width>231</width>
-      <height>141</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="title">
@@ -80,21 +110,21 @@
        <x>10</x>
        <y>20</y>
        <width>211</width>
-       <height>51</height>
+       <height>31</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QPushButton" name="start_btn">
         <property name="text">
-         <string>start</string>
+         <string>시작</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="stop_btn">
         <property name="text">
-         <string>stop</string>
+         <string>멈춤</string>
         </property>
        </widget>
       </item>
@@ -104,21 +134,28 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>80</y>
+       <y>60</y>
        <width>211</width>
-       <height>51</height>
+       <height>41</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="1">
        <widget class="QPushButton" name="save_btn">
         <property name="text">
-         <string>save</string>
+         <string>저장</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QSpinBox" name="spinBox">
+      <item row="0" column="3">
+       <widget class="QPushButton" name="auto_save_btn">
+        <property name="text">
+         <string>자동저장</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QSpinBox" name="save_cnt">
         <property name="minimum">
          <number>5</number>
         </property>
@@ -174,7 +211,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>30</y>
+       <y>50</y>
        <width>191</width>
        <height>21</height>
       </rect>
@@ -193,9 +230,9 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>60</y>
+       <y>80</y>
        <width>191</width>
-       <height>21</height>
+       <height>36</height>
       </rect>
      </property>
      <property name="verticalScrollBarPolicy">
@@ -212,7 +249,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>180</y>
+       <y>290</y>
        <width>91</width>
        <height>21</height>
       </rect>
@@ -231,7 +268,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>180</y>
+       <y>290</y>
        <width>91</width>
        <height>21</height>
       </rect>
@@ -246,11 +283,11 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QTextEdit" name="min_temp">
+    <widget class="QTextEdit" name="center_temp">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>90</y>
+       <y>130</y>
        <width>191</width>
        <height>21</height>
       </rect>
@@ -269,7 +306,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
+       <y>250</y>
        <width>191</width>
        <height>21</height>
       </rect>
@@ -282,6 +319,19 @@
      </property>
      <property name="readOnly">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="serial_find_btn">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>191</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>시리얼 포트 검색</string>
      </property>
     </widget>
    </widget>
@@ -297,6 +347,197 @@
     <property name="title">
      <string>plot control</string>
     </property>
+    <widget class="QPushButton" name="plus">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>50</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="minus">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>50</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="zero">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>50</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="graph_size">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>24</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="size_label">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>10</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>그래프 사이즈</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="point_move">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>좌표 이동</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>44</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> X 좌표 </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>44</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> Y 좌표 </string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="x_point">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>40</y>
+       <width>71</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>160</number>
+     </property>
+     <property name="value">
+      <number>80</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="y_point">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>64</y>
+       <width>71</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>120</number>
+     </property>
+     <property name="value">
+      <number>60</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTextEdit" name="time_text">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>10</y>
+      <width>231</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -308,8 +549,20 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>센서 선택</string>
+    </property>
+    <addaction name="actionsensor_select"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionsensor_select">
+   <property name="text">
+    <string>sensor select</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
